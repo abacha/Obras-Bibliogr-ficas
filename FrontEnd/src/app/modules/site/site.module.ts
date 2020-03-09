@@ -8,6 +8,7 @@ import { AuthorListComponent } from './components/author-list/author-list.compon
 import { StorageService } from './services/storage/storage.service';
 import { MaterialModule } from '../shared/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
+    SharedModule,
     SiteRoutingModule,
     MaterialModule,
     FormsModule,

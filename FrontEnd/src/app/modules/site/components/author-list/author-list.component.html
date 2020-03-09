@@ -3,10 +3,10 @@
         <mat-card-title>Autores Cadastrados</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <table mat-table fxFlex>
+        <table mat-table fxFlex="100" [dataSource]="tableDatasource">
             <ng-container matColumnDef="name">
                 <th mat-header-cell *matHeaderCellDef>Nome do Author</th>
-                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.name | author}} </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

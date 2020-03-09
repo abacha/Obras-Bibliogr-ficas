@@ -5,12 +5,39 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class AuthorPipe implements PipeTransform {
 
+  private preprositions : string[] = ['da', 'de', 'do', 'das', 'dos'];
+  private surnames: string[] = ['filho', 'filha', 'neto', 'neta', 'sobrinho', 'sobrinha', 'junior'];
+
   transform(value: string): string {
-    return null;
+    return this.formatAuthor(value);
   }
 
   private formatAuthor(name: string): string {
-    return ''
+    let nameParts = name.split(' ');
+    let surnames: string = '';
+    let authorName: string = '';
+
+    nameParts.map( (value, index, arr) => {
+      if (arr.length === 1) {
+        authorName = value.toUpperCase();
+        return;
+      }
+
+      console.log();
+
+      if (( ( this.surnames.includes(value.toLowerCase()) && index === (arr.length - 1)) || index === (arr.length - 1)) || (this.surnames.includes(arr[index + 1]) && !this.preprositions.includes(value) && arr.length >= 3 )) {
+        surnames = surnames + ' ' + value.toUpperCase();
+        return;
+      }
+
+      authorName = authorName + ' ' + value;
+      return;
+    });
+
+    const comma = (surnames) ? ', ': '' ;
+
+    return surnames + comma + authorName;
+
   }
 
 }

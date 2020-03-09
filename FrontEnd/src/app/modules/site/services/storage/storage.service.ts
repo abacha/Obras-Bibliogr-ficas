@@ -5,20 +5,17 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable()
 export class StorageService {
 
-  private authors : [Author];
+  private authors : Author[] = [];
 
-  private dataSource = new BehaviorSubject<[Author]>(this.authors);
+  private dataSource = new BehaviorSubject<Author[]>(this.authors);
   public authorList = this.dataSource.asObservable();
 
   constructor() {
+    this.createItem('authors');
     this.dataSource.next(JSON.parse(localStorage.getItem('authors')));
   }
 
   public insertAuthor( name: string): boolean {
-    if (!this.authors) {
-      this.createItem('authors');
-    }
-
     const author: Author = {
       name
     }
@@ -27,7 +24,9 @@ export class StorageService {
   }
 
   private createItem(itemName: string): void {
-    localStorage.setItem(itemName, null);
+    if (localStorage.getItem(itemName) === null) {
+      localStorage.setItem(itemName, JSON.stringify([]));
+    }
   }
 
   private insert(author: Author): boolean {
