@@ -3,8 +3,14 @@
         <mat-card-title>Autores Cadastrados</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <table mat-table>
+        <table mat-table fxFlex>
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef>Nome do Author</th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
 
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
     </mat-card-content>
 </mat-card>

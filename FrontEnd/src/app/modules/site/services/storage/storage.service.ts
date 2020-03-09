@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Author } from '../../interfaces/author';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class StorageService {
 
-  private authors : [Author] = null;
+  private authors : [Author];
+
+  private dataSource = new BehaviorSubject<[Author]>(this.authors);
+  public authorList = this.dataSource.asObservable();
 
   constructor() {
-    this.authors = JSON.parse(localStorage.getItem('authors'));
+    this.dataSource.next(JSON.parse(localStorage.getItem('authors')));
   }
 
   public insertAuthor( name: string): boolean {
@@ -29,6 +33,7 @@ export class StorageService {
   private insert(author: Author): boolean {
     if (this.authors.push(author) ) {
       localStorage.setItem('authors', JSON.stringify(this.authors));
+      this.dataSource.next(this.authors);
       return true;
     }
 
