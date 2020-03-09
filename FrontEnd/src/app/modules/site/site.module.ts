@@ -6,6 +6,8 @@ import { SiteComponent } from './site.component';
 import { AuthorFormComponent } from './components/author-form/author-form.component';
 import { AuthorListComponent } from './components/author-list/author-list.component';
 import { StorageService } from './services/storage/storage.service';
+import { MaterialModule } from '../shared/material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -16,7 +18,10 @@ import { StorageService } from './services/storage/storage.service';
   ],
   imports: [
     CommonModule,
-    SiteRoutingModule
+    SiteRoutingModule,
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     StorageService
