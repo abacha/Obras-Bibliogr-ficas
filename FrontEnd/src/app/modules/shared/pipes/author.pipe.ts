@@ -23,9 +23,7 @@ export class AuthorPipe implements PipeTransform {
         return;
       }
 
-      console.log();
-
-      if (( ( this.surnames.includes(value.toLowerCase()) && index === (arr.length - 1)) || index === (arr.length - 1)) || (this.surnames.includes(arr[index + 1]) && !this.preprositions.includes(value) && arr.length >= 3 )) {
+      if (( ( this.surnames.includes(value.toLowerCase()) && index === (arr.length - 1)) || index === (arr.length - 1)) || (this.surnames.includes(arr[index + 1].toLowerCase()) && !this.preprositions.includes(value.toLowerCase()) && arr.length >= 3 )) {
         surnames = surnames + ' ' + value.toUpperCase();
         return;
       }
