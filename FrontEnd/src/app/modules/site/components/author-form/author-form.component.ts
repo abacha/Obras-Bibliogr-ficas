@@ -34,11 +34,17 @@ export class AuthorFormComponent implements OnInit {
   public insertAuthor() : void {
     if (this.authorForm.valid) {
       if (this.storage.insertAuthor(this.authorForm.get('name').value)) {
-        this.snack.open('Autor Inserido com Sucesso!');
+        this.snack.open('Autor Inserido com Sucesso!', null, {
+          duration: 2000
+        });
         return;
       }
 
-      this.snack.open('Ocorreu um erro na sua requisição, tente novamente!');
+      this.snack.open('Ocorreu um erro na sua requisição, tente novamente!',
+      null,
+      {
+        duration: 2000
+      });
     }
   }
 

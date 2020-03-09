@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthorPipe } from './pipes/author.pipe';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 
@@ -9,10 +10,12 @@ import { AuthorPipe } from './pipes/author.pipe';
     AuthorPipe
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FlexLayoutModule
   ],
   exports: [
-    AuthorPipe
+    AuthorPipe,
+    FlexLayoutModule
   ],
   providers: []
 })
