@@ -1,26 +1,96 @@
-# Obras Bibliográficas
+# Desafio programação - para vaga Back-end
 
-(LEIA ATÉ O FINAL)
+👋 Olá, Seja Bem-vindo(a) ao Desafio programação - para vaga Back-end Guide.
 
-Quando se lista o nome de autores de livros, artigos e outras publicações é comum que se apresente o nome do autor ou dos autores da seguinte forma: sobrenome do autor em letras maiúsculas, seguido de uma vírgula e da primeira parte do nome apenas com as iniciais maiúsculas.
+# Exigências
 
-Por exemplo:
-* SILVA, Joao
-* COELHO, Paulo
-* ARAUJO, Celso de
+**:warning: Atenção:** É necessário que os desenvolvedores usem o Docker no seu ambiente de desenvolvimento.
 
-Seu desafio é fazer um programa que leia um número inteiro correspondendo ao número de nomes que será fornecido, e, a seguir, leia estes nomes (que podem estar em qualquer tipo de letra) e imprima a versão formatada no estilo exemplificado acima.
+- **🛠 Modo Desenvolvimento Docker**
+    - :computer: [Linux Ubuntu LTS](https://ubuntu.com/download/desktop)
+    - 🐳 [Docker](https://docs.docker.com/engine/installation/) Deve estar instalado.
+    - 🐳 [Docker Compose](https://docs.docker.com/compose/) Deve estar instalado.
+    - **💡 Dica:** [Documentação do Docker](https://docs.docker.com/)
 
-As seguintes regras devem ser seguidas nesta formatação:
-* o sobrenome será igual a última parte do nome e deve ser apresentado em letras maiúsculas;
-* se houver apenas uma parte no nome, ela deve ser apresentada em letras maiúsculas (sem vírgula): se a entrada for “ Guimaraes” , a saída deve ser “ GUIMARAES”;
-* se a última parte do nome for igual a "FILHO", "FILHA", "NETO", "NETA", "SOBRINHO", "SOBRINHA" ou "JUNIOR" e houver duas ou mais partes antes, a penúltima parte fará parte do sobrenome. Assim: se a entrada for "Joao Silva Neto", a saída deve ser "SILVA NETO, Joao" ; se a entrada for "Joao Neto" , a saída deve ser "NETO, Joao";
-* as partes do nome que não fazem parte do sobrenome devem ser impressas com a inicial maiúscula e com as demais letras minúsculas;
-* "da", "de", "do", "das", "dos" não fazem parte do sobrenome e não iniciam por letra maiúscula.
+# Instalando
 
-## Tecnologias a serem utilizadas
+## 🐳 Modo Desenvolvimento com Docker
 
-## Procedimento para entrega
-Realize um fork deste repositório, desenvolva sua solução e encaminhe o seu repositório com o seu código. Arquivos compactados não serão aceitos.
 
-Altere o arquivo README para descrever quais componentes foram utilizados e como sua aplicação deverá ser executada.
+### Observações: 
+
+- Seguir todas as etapas abaixo.
+
+- Quando executar os comandos docker-compose [comando], porventura retorne erro de permissões, execute sudo docker-compose [comando] e adicione sua senha.
+
+Após instalar o docker e docker-compose, estando na pasta raiz do projeto, execute:
+
+```sh
+docker-compose build
+```
+
+```sh
+docker-compose up
+```
+
+Para se certificar que os seus containers subiram corretamente, todos os containers deve estar com o status `UP`, execute:
+
+```sh
+docker-compose ps -a
+```
+
+Para acessar o container da aplicação, execute:
+
+```sh
+docker-compose run --rm web bash
+```
+
+Para acessar a instância do banco de dados, execute:
+
+```sh
+docker exec-it [nome do db] bash
+```
+
+Para derrubar e subir a instância do docker novamente, execute:
+
+```sh
+docker-compose down && docker-compose up web
+```
+
+🚀 :clap: Para visualizar o sistema basta acessar no navegador no endereço: localhost:3000
+
+# Banco de Dados
+
+### Em um novo terminal execute:
+
+```sh
+docker-compose run --rm web bash
+```
+
+```sh
+rake db:create
+```
+
+```sh
+rake db:migrate
+```
+
+# Como executar a Suíte de Teste
+
+### Testes Unitários com Rspec, em um novo terminal execute:
+
+```sh
+docker-compose run --rm web bash
+```
+
+```sh
+RAILS_ENV=test rails db:create
+```
+
+```sh
+RAILS_ENV=test rails db:migrate
+```
+
+```sh
+bundle exec rspec
+```
