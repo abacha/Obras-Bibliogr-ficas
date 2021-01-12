@@ -94,3 +94,9 @@ RAILS_ENV=test rails db:migrate
 ```sh
 bundle exec rspec
 ```
+
+## Print
+
+**Exemplo usado via POSTMAN**
+
+![](https://github.com/Gilberto-F-S-Junior/Obras-Bibliogr-ficas/raw/master/public/postman.png)
