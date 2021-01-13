@@ -10,13 +10,7 @@ module Api
       end
 
       def create_all
-        # author = Author.new(author_params)
-        
-        # if author.save
-          render json: CreateAuthorsService.build(params[:name_list]), status: :created
-        # else
-          # render json: author.errors, status: :unproccessable_entuty
-        # end
+        render json: CreateAuthorsService.build(params[:name_list]), status: :ok
       end
 
       def create 

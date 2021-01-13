@@ -74,10 +74,7 @@ class CreateAuthorsService
   end
 
   def create_author(name)
-
     Author.create(name: name)
-
   end
-
 
 end
